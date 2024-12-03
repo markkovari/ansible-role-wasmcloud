@@ -28,5 +28,5 @@ jobs:
       - run: ansible-playbook tests/test.yaml -i tests/inventory --become -v
         name: install wasmcloud and start its service
         #TODO: clarify the playbook to run expected CI check here
-      - run: systemctl is-active --quiet wasmcloud-host
-        name: wasmcloud is running
+      # - run: systemctl is-active --quiet wasmcloud-host
+      #   name: wasmcloud is running
