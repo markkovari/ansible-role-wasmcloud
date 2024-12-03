@@ -1,8 +1,13 @@
 ---
 name: ci
 on:
-  - push
-  - pr
+  push:
+    branches:
+      - main
+  pr:
+    branches:
+      - main
+
 jobs:
   build:
     runs-on: ubuntu-latest
