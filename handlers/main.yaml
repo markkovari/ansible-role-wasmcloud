@@ -1,0 +1,16 @@
+---
+- name: Restart wasmcloud-host
+  ansible.builtin.service:
+    name: wasmcloud-host
+    state: restarted
+
+- name: Reload wasmcloud-host
+  ansible.builtin.service:
+    name: wasmcloud-host
+    state: reloaded
+
+- name: Reload daemon wasmcloud-host
+  ansible.builtin.systemd:
+    state: stopped
+    daemon_reload: true
+    name: wasmcloud-host

@@ -6,3 +6,9 @@ required_serice: "nats-server"
 wasmcloud_envs:
   RUST_LOG: "info"
   WASMCLOUD_JS_DOMAIN: "default"
+
+wasmcloud_version: "v1.4.2"
+# define arch variable for your target architecture
+# choose from available ones here
+# https://github.com/wasmCloud/wasmCloud/releases/tag/v1.4.2
+arch: "x86_64-unknown-linux-musl"
