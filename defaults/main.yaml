@@ -1,0 +1,8 @@
+---
+environment_file_path: "/etc/wasmcloud/wasmcloud-host.env"
+
+required_serice: "nats-server"
+
+wasmcloud_envs:
+  RUST_LOG: "info"
+  WASMCLOUD_JS_DOMAIN: "default"
