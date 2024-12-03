@@ -4,6 +4,11 @@
     name: wasmcloud-host
     state: restarted
 
+- name: Start wasmcloud-host
+  ansible.builtin.service:
+    name: wasmcloud-host
+    state: started
+
 - name: Reload wasmcloud-host
   ansible.builtin.service:
     name: wasmcloud-host

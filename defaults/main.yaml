@@ -1,5 +1,6 @@
 ---
 environment_file_path: "/etc/wasmcloud/wasmcloud-host.env"
+wasmcloud_file_path: "/usr/local/bin/wasmcloud"
 
 required_serice: "nats-server"
 

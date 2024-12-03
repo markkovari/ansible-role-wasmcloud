@@ -25,7 +25,8 @@ jobs:
         run: ansible-lint .
       - run: ansible-playbook tests/test.yaml -i tests/inventory --syntax-check
         name: basic role syntax check
-      - run: ansible-playbook tests/test.yaml -i tests/inventory --become
+      - run: ansible-playbook tests/test.yaml -i tests/inventory --become -v
         name: install wasmcloud and start its service
-      - run: /usr/local/bin/wasmcloud -v
-        name: wasmcloud version
+        #TODO: clarify the playbook to run expected CI check here
+      - run: systemctl is-active --quiet wasmcloud-host
+        name: wasmcloud is running
