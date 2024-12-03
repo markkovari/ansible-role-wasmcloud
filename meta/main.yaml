@@ -1,0 +1,22 @@
+---
+galaxy_info:
+  role_name: wasmcloud
+  namespace: markkovari
+  author: Mark Kovari
+  description: Set up wasmcloud host
+  company: markkovari
+  min_ansible_version: "2.11"
+  license: MIT
+  platforms:
+    - name: Ubuntu
+      versions:
+        - all
+    - name: Debian
+      versions:
+        - all
+  galaxy_tags:
+    - webassembly
+    - nats
+    - wasmcloud
+
+dependencies: []
