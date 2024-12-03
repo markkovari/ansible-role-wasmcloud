@@ -21,6 +21,6 @@ jobs:
       - run: ansible-playbook tests/test.yaml -i tests/inventory --syntax-check
         name: basic role syntax check
       - run: ansible-playbook tests/test.yaml -i tests/inventory --become
-        name: install NATS and start its service
-      - run: /usr/local/bin/nats-server -v
-        name: nats server version
+        name: install wasmcloud and start its service
+      - run: /usr/local/bin/wasmcloud -v
+        name: wasmcloud version
