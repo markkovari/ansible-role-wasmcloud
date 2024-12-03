@@ -1,8 +1,9 @@
 ---
 - name: Install wasmcloud package.
-  ansible.builtin.apt:
-    state: present
-    deb: "https://github.com/wasmCloud/wasmCloud/releases/download/{{ wasmcloud_version }}/wasmcloud-{{ arch}}"
+  ansible.builtin.get_url:
+    dest: "{{ wasmcloud_file_path }}"
+    mode: "0755"
+    url: "https://github.com/wasmCloud/wasmCloud/releases/download/{{ wasmcloud_version }}/wasmcloud-{{ arch }}"
 
 - name: Ensure wasmcloud service file is available.
   ansible.builtin.template:
@@ -12,12 +13,15 @@
     backup: false
   notify:
     - Reload daemon wasmcloud-host
-  
-- name: Ensure wasmcloud service is started and enabled on boot.
-  ansible.builtin.service:
-    name: wasmcloud-host
-    state: started
-    enabled: true
+
+- name: Ensure wasmcloud directory exists
+  ansible.builtin.file:
+    path: /etc/wasmcloud
+    state: directory
+    mode: "0755"
+    owner: root
+    group: root
+  become: true
 
 - name: Create or update wasmcloud env file (/etc/wasmcloud/wasmcloud-host.env)
   ansible.builtin.template:
@@ -26,4 +30,10 @@
     mode: "0644"
     backup: false
   notify:
-    - Restart wasmcloud-host
+    - Start wasmcloud-host
+
+- name: Ensure wasmcloud service is started and enabled on boot.
+  ansible.builtin.service:
+    name: wasmcloud-host
+    state: started
+    enabled: true

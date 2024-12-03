@@ -3,7 +3,13 @@
 [Unit]
 Description=wasmCloud Host
 Documentation=https://wasmcloud.com/docs/
-After=nats-leaf.service network-online.target
+
+# TODO: cleanup this, probably want nats-leaf but later
+{% if required_serice|length %}
+After={{required_serice}} network-online.target
+{% else %}
+After=network-online.target
+{% endif %}
 Wants=network-online.target
 {% if required_serice|length %}
 Requires={{required_serice}}
@@ -11,7 +17,7 @@ Requires={{required_serice}}
 
 [Service]
 EnvironmentFile={{ environment_file_path }}
-ExecStart=/usr/local/bin/wasmcloud
+ExecStart={{ wasmcloud_file_path }}
 Restart=always
 StartLimitInterval=0
 RestartSec=5
