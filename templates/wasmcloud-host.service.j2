@@ -16,7 +16,7 @@ Requires={{required_serice}}
 {% endif %}
 
 [Service]
-EnvironmentFile={{ environment_file_path }}
+EnvironmentFile={{ wasmcloud_environment_file_path }}
 ExecStart={{ wasmcloud_file_path }}
 Restart=always
 StartLimitInterval=0

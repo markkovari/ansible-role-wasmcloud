@@ -1,5 +1,4 @@
 ---
-
 - name: Ensure NATS JetStream directory is present or leaf
   ansible.builtin.file:
     mode: "0755"
@@ -21,4 +20,3 @@
     backup: false
   notify:
     - Reload daemon nats-leaf
-

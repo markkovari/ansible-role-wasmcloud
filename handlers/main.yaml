@@ -1,6 +1,5 @@
 ---
-#TODO: separate handlers for different files
-
+# TODO: separate handlers for different files
 - name: Restart nats-leaf
   ansible.builtin.service:
     name: nats-leaf
