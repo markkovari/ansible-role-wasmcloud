@@ -23,8 +23,8 @@ wasmcloud_envs:
   WASMCLOUD_JS_DOMAIN: "leaf"
   WASMCLOUD_LABEL_HOST_region: "{{ inventory_hostname }}"
   WASMCLOUD_LATTICE_PREFIX: "wasmcloud-cluster"
-  # should be the same as nats_leaf_port
-  WASMCLOUD_NATS_PORT: '{{ nats_leaf_port }}'
+  WASMCLOUD_NATS_PORT: '{{ nats_leaf_port }}' # should be the same as nats_leaf_port
+  WASMCLOUD_NATS_HOST: 0.0.0.0
 
 # wasmcloud version and architecture
 wasmcloud_version: "v1.4.2"
