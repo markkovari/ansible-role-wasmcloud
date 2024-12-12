@@ -1,5 +1,7 @@
 # {{ ansible_managed }}
 
+listen={{ nats_leaf_port }}
+
 jetstream {
     domain={{ nats_leaf_domain }}
     store_dir="{{ nats_leaf_store_dir }}"
