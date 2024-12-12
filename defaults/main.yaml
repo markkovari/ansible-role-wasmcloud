@@ -16,6 +16,10 @@ nats_leaf_port: 4444
 # e.g.: "nats://a:a@nats-core:7422",
 nats_server_urls: []
 
+nats_websocket_enabled: true
+nats_websocket_port: 4223
+nats_websocket_no_tls: true
+
 # wasmcloud environment variables
 wasmcloud_envs:
   RUST_LOG: "info"
