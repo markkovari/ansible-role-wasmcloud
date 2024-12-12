@@ -19,7 +19,7 @@ nats_server_urls: []
 wasmcloud_envs:
   RUST_LOG: "info"
   NATS_HOST: "{{ inventory_hostname }}"
-  WASMCLOUD_JS_DOMAIN: "default"
+  WASMCLOUD_JS_DOMAIN: "leaf"
   HOST_region: "{{ inventory_hostname }}"
   WASMCLOUD_LATTICE_PREFIX: "wasmcloud-cluster"
 
