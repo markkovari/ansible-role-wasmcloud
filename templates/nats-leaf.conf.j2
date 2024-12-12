@@ -18,7 +18,7 @@ leafnodes {
   remotes = [
     {
       {% if nats_credentials_used %}
-      credentials: "{{ nats_credential_file_path }}"
+      credentials: "{{ nats_credentials_file_path_target }}"
       {% endif %}
       urls: [
         {% for url in nats_server_urls %}
