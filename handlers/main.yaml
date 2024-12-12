@@ -1,4 +1,27 @@
 ---
+#TODO: separate handlers for different files
+
+- name: Restart nats-leaf
+  ansible.builtin.service:
+    name: nats-leaf
+    state: restarted
+
+- name: Start nats-leaf
+  ansible.builtin.service:
+    name: nats-leaf
+    state: started
+
+- name: Reload nats-leaf
+  ansible.builtin.service:
+    name: nats-leaf
+    state: reloaded
+
+- name: Reload daemon nats-leaf
+  ansible.builtin.systemd:
+    state: stopped
+    daemon_reload: true
+    name: nats-leaf
+
 - name: Restart wasmcloud-host
   ansible.builtin.service:
     name: wasmcloud-host
