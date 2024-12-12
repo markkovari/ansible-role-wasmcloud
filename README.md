@@ -7,7 +7,7 @@
 
 Feel free to open an issue or a pull request if you have any suggestions or improvements.
 
-[![License](https://img.shields.io/github/license/markkovari/ansible-role-wasmcloud)](
+
 [![ci](https://github.com/markkovari/ansible-role-wasmcloud/actions/workflows/ci.yaml/badge.svg)](https://github.com/markkovari/ansible-role-wasmcloud/actions/workflows/ci.yaml)
 
 wasmCloud is a secure, portable, and lightweight WebAssembly host runtime for building cloud-native applications. This Ansible role will deploy a wasmCloud host runtime on your servers.
