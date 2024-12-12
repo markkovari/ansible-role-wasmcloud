@@ -1,5 +1,5 @@
 ---
-- name: Setup wasmcloud host
-  ansible.builtin.include_tasks: wasmcloud.yaml
 - name: Setup nats-leaf
   ansible.builtin.include_tasks: nats-leaf.yaml
+- name: Setup wasmcloud host
+  ansible.builtin.include_tasks: wasmcloud.yaml

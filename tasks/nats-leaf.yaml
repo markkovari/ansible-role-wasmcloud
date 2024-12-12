@@ -11,6 +11,8 @@
     dest: '{{ nats_leaf_config_file_path }}'
     mode: "0644"
     backup: false
+  notify:
+    - Start nats-leaf
 
 - name: Ensure nats-leaf service file is available.
   ansible.builtin.template:
@@ -20,3 +22,9 @@
     backup: false
   notify:
     - Reload daemon nats-leaf
+
+- name: Ensure nats-leaf service is started and enabled on boot.
+  ansible.builtin.service:
+    name: nats-leaf
+    state: started
+    enabled: true
