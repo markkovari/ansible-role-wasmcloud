@@ -1,4 +1,13 @@
 ---
+- name: Ensure wasmcloud directory exists
+  ansible.builtin.file:
+    path: /etc/wasmcloud
+    state: directory
+    mode: "0755"
+    owner: root
+    group: root
+  become: true
+
 - name: Ensure NATS JetStream directory is present or leaf
   ansible.builtin.file:
     mode: "0755"
@@ -11,6 +20,8 @@
     dest: '{{ nats_leaf_config_file_path }}'
     mode: "0644"
     backup: false
+  notify:
+    - Start nats-leaf
 
 - name: Ensure nats-leaf service file is available.
   ansible.builtin.template:
@@ -20,3 +31,9 @@
     backup: false
   notify:
     - Reload daemon nats-leaf
+
+- name: Ensure nats-leaf service is started and enabled on boot.
+  ansible.builtin.service:
+    name: nats-leaf
+    state: started
+    enabled: true
