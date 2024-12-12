@@ -11,7 +11,7 @@ nats_server_binary_path: "/usr/local/bin/nats-server"
 
 # nats-leaf configuration
 nats_leaf_domain: "leaf"
-required_serice: "nats-server"
+nats_leaf_store_dir: "/var/lib/nats-leaf"
 # e.g.: "nats://a:a@nats-core:7422",
 nats_server_urls: []
 
