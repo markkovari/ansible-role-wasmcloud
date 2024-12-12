@@ -5,7 +5,7 @@ listen={{ nats_leaf_port }}
 {% if nats_websocket_enabled %}
 websocket {
   port: {{ nats_websocket_port }}
-  no_tls: {{ nats_websocket_no_tls }}
+  no_tls: true
 }
 {% endif %}
 
@@ -17,6 +17,9 @@ jetstream {
 leafnodes {
   remotes = [
     {
+      {% if nats_credentials_used %}
+      credentials: "{{ nats_credential_file_path }}"
+      {% endif %}
       urls: [
         {% for url in nats_server_urls %}
         "{{ url }}",
