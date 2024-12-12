@@ -2,6 +2,13 @@
 
 listen={{ nats_leaf_port }}
 
+{% if nats_websocket_enabled %}
+websocket {
+  port: {{ nats_websocket_port }}
+  no_tls: {{ nats_websocket_no_tls }}
+}
+{% endif %}
+
 jetstream {
     domain={{ nats_leaf_domain }}
     store_dir="{{ nats_leaf_store_dir }}"
