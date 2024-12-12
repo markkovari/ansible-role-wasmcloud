@@ -19,8 +19,8 @@ nats_server_urls: []
 nats_websocket_enabled: true
 nats_websocket_port: 4223
 nats_credentials_used: false
-nats_credentials_file_path_target: "/etc/wasmcloud/nats-leaf-credentials.conf"
-nats_credentials_file_path_source: "./nats-leaf-credentials.conf"
+nats_credentials_file_path_target: "/etc/wasmcloud/nats-leaf-credentials.creds"
+nats_credentials_file_path_source: "./nats-leaf-credentials.creds"
 
 # wasmcloud environment variables
 wasmcloud_envs:
