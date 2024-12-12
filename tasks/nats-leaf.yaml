@@ -1,4 +1,13 @@
 ---
+- name: Ensure wasmcloud directory exists
+  ansible.builtin.file:
+    path: /etc/wasmcloud
+    state: directory
+    mode: "0755"
+    owner: root
+    group: root
+  become: true
+
 - name: Ensure NATS JetStream directory is present or leaf
   ansible.builtin.file:
     mode: "0755"
