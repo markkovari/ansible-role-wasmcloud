@@ -18,17 +18,25 @@ nats_server_urls: []
 
 nats_websocket_enabled: true
 nats_websocket_port: 4223
-nats_websocket_no_tls: true
+nats_credentials_used: false
+nats_credentials_file_path_target: "/etc/wasmcloud/nats-leaf-credentials.conf"
+nats_credentials_file_path_source: "./nats-leaf-credentials.conf"
 
 # wasmcloud environment variables
 wasmcloud_envs:
-  RUST_LOG: "info"
-  # NATS_HOST: "{{ inventory_hostname }}"
-  WASMCLOUD_JS_DOMAIN: "leaf"
-  WASMCLOUD_LABEL_HOST_region: "{{ inventory_hostname }}"
+  WASMCLOUD_STRUCTURED_LOGGING_ENABLED: "true"
+  WASMCLOUD_LOG_LEVEL: "info"
+  WASMCLOUD_LATTICE: "default"
+  WASMCLOUD_JS_DOMAIN: "{{ nats_leaf_domain }}"
   WASMCLOUD_LATTICE_PREFIX: "wasmcloud-cluster"
-  WASMCLOUD_NATS_PORT: '{{ nats_leaf_port }}' # should be the same as nats_leaf_port
+  WASMCLOUD_NATS_PORT: "{{ nats_leaf_port }}" # should be the same as nats_leaf_port
   WASMCLOUD_NATS_HOST: 0.0.0.0
+  WASMCLOUD_RPC_TIMEOUT_MS: "4000"
+  WASMCLOUD_OCI_ALLOW_LATEST: "true"
+  WASMCLOUD_OCI_ALLOWED_INSECURE: "true"
+  WASMCLOUD_LABEL_region: "{{ inventory_hostname }}"
+  WASMCLOUD_LABEL_managed_by: "ansible"
+  WASMCLOUD_LABEL_host: "{{ inventory_hostname }}"
 
 # wasmcloud version and architecture
 wasmcloud_version: "v1.4.2"

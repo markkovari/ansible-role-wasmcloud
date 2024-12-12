@@ -14,10 +14,19 @@
     path: "{{ nats_leaf_store_dir }}"
     state: directory
 
+- name: Copy over credentials for nats-leaf
+  ansible.builtin.copy:
+    src: "{{ nats_credentials_file_path_source }}"
+    dest: "{{ nats_credentials_file_path_target }}"
+    owner: root
+    group: root
+    mode: "0755"
+  when: nats_credentials_used
+
 - name: Create nats-leaf configuration file.
   ansible.builtin.template:
     src: nats-leaf.conf.j2
-    dest: '{{ nats_leaf_config_file_path }}'
+    dest: "{{ nats_leaf_config_file_path }}"
     mode: "0644"
     backup: false
   notify:
@@ -26,7 +35,7 @@
 - name: Ensure nats-leaf service file is available.
   ansible.builtin.template:
     src: nats-leaf.service.j2
-    dest: '{{ nats_leaf_service_file_path }}'
+    dest: "{{ nats_leaf_service_file_path }}"
     mode: "0644"
     backup: false
   notify:
