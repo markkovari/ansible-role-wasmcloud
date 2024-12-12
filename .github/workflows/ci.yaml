@@ -21,8 +21,10 @@ jobs:
           python -m pip install --upgrade ansible ansible-lint
       - name: create ansible.cfg with correct roles_path
         run: printf '[defaults]\nroles_path=../' > ansible.cfg
-      - name: ansible-lint
-        run: ansible-lint .
+      - uses: ansible/ansible-lint@main
+        with:
+          args: tests/test.yaml
+        name: ansible-lint
       - run: ansible-playbook tests/test.yaml -i tests/inventory --syntax-check
         name: basic role syntax check
       - run: ansible-playbook tests/test.yaml -i tests/inventory --become -v
