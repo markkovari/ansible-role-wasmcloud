@@ -1,0 +1,18 @@
+# {{ ansible_managed }}
+
+jetstream {
+    domain={{ nats_leaf_domain }}
+    store_dir="{{ nats_leaf_store_dir }}"
+}
+
+leafnodes {
+  remotes = [
+    {
+      urls: [
+        {% for url in nats_server_urls %}
+        "{{ url }}",
+        {% endfor %}
+      ]
+    }
+  ]
+}

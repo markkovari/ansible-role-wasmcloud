@@ -1,13 +1,29 @@
 ---
-environment_file_path: "/etc/wasmcloud/wasmcloud-host.env"
+# wasmcloud paths
+wasmcloud_environment_file_path: "/etc/wasmcloud/wasmcloud-host.env"
+wasmcloud_service_file_path: "/etc/systemd/system/wasmcloud-host.service"
 wasmcloud_file_path: "/usr/local/bin/wasmcloud"
 
-required_serice: "nats-server"
+# nats-leaf paths
+nats_leaf_config_file_path: "/etc/wasmcloud/nats-leaf.conf"
+nats_leaf_service_file_path: "/etc/systemd/system/nats-leaf.service"
+nats_server_binary_path: "/usr/local/bin/nats-server"
 
+# nats-leaf configuration
+nats_leaf_domain: "leaf"
+required_serice: "nats-server"
+# e.g.: "nats://a:a@nats-core:7422",
+nats_server_urls: []
+
+# wasmcloud environment variables
 wasmcloud_envs:
   RUST_LOG: "info"
+  NATS_HOST: "{{ inventory_hostname }}"
   WASMCLOUD_JS_DOMAIN: "default"
+  HOST_region: "{{ inventory_hostname }}"
+  WASMCLOUD_LATTICE_PREFIX: "wasmcloud-cluster"
 
+# wasmcloud version and architecture
 wasmcloud_version: "v1.4.2"
 # define arch variable for your target architecture
 # choose from available ones here
