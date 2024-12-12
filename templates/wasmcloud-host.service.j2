@@ -4,16 +4,11 @@
 Description=wasmCloud Host
 Documentation=https://wasmcloud.com/docs/
 
-# TODO: cleanup this, probably want nats-leaf but later
-{% if required_serice|length %}
-After={{required_serice}} network-online.target
-{% else %}
-After=network-online.target
-{% endif %}
+Description=wasmCloud Host
+Documentation=https://wasmcloud.com/docs/
+After=nats-leaf.service network-online.target
 Wants=network-online.target
-{% if required_serice|length %}
-Requires={{required_serice}}
-{% endif %}
+Requires=nats-leaf.service
 
 [Service]
 EnvironmentFile={{ wasmcloud_environment_file_path }}
