@@ -5,31 +5,31 @@ wasmcloud_service_file_path: "/etc/systemd/system/wasmcloud-host.service"
 wasmcloud_file_path: "/usr/local/bin/wasmcloud"
 
 # nats-leaf paths
-nats_leaf_config_file_path: "/etc/wasmcloud/nats-leaf.conf"
-nats_leaf_service_file_path: "/etc/systemd/system/nats-leaf.service"
-nats_server_binary_path: "/usr/local/bin/nats-server"
+# nats_leaf_config_file_path: "/etc/wasmcloud/nats-leaf.conf"
+# nats_leaf_service_file_path: "/etc/systemd/system/nats-leaf.service"
+# nats_server_binary_path: "/usr/local/bin/nats-server"
 
 # nats-leaf configuration
-nats_leaf_domain: "leaf"
-nats_leaf_store_dir: "/var/lib/nats-leaf"
-nats_leaf_port: 4444
+# nats_leaf_domain: "leaf"
+# nats_leaf_store_dir: "/var/lib/nats-leaf"
+# nats_leaf_port: 4444
 # e.g.: "nats://a:a@nats-core:7422",
-nats_server_urls: []
+# nats_server_urls: []
 
-nats_websocket_enabled: true
-nats_websocket_port: 4223
-nats_credentials_used: false
-nats_credentials_file_path_target: "/etc/wasmcloud/nats-leaf-credentials.creds"
-nats_credentials_file_path_source: "./nats-leaf-credentials.creds"
+# nats_websocket_enabled: true
+# nats_websocket_port: 4223
+# nats_credentials_used: false
+# nats_credentials_file_path_target: "/etc/wasmcloud/nats-leaf-credentials.creds"
+# nats_credentials_file_path_source: "./nats-leaf-credentials.creds"
 
 # wasmcloud environment variables
 wasmcloud_envs:
   WASMCLOUD_STRUCTURED_LOGGING_ENABLED: "true"
   WASMCLOUD_LOG_LEVEL: "info"
   WASMCLOUD_LATTICE: "default"
-  WASMCLOUD_JS_DOMAIN: "{{ nats_leaf_domain }}"
-  WASMCLOUD_LATTICE_PREFIX: "wasmcloud-cluster"
-  WASMCLOUD_NATS_PORT: "{{ nats_leaf_port }}" # should be the same as nats_leaf_port
+  WASMCLOUD_JS_DOMAIN: "deafult"
+  # WASMCLOUD_LATTICE_PREFIX: "wasmcloud-cluster"
+  WASMCLOUD_NATS_PORT: "4222"
   WASMCLOUD_NATS_HOST: 0.0.0.0
   WASMCLOUD_RPC_TIMEOUT_MS: "4000"
   WASMCLOUD_OCI_ALLOW_LATEST: "true"

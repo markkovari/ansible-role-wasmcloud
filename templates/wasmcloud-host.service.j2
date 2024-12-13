@@ -6,9 +6,8 @@ Documentation=https://wasmcloud.com/docs/
 
 Description=wasmCloud Host
 Documentation=https://wasmcloud.com/docs/
-After=nats-leaf.service network-online.target
+After=network-online.target
 Wants=network-online.target
-Requires=nats-leaf.service
 
 [Service]
 EnvironmentFile={{ wasmcloud_environment_file_path }}
